@@ -1,6 +1,6 @@
 [package]
 name = "sol-regex"
-version = "1.7.1"  #:version
+version = "0.0.1"  #:version
 authors = ["The Rust Project Developers"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
