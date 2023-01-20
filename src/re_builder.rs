@@ -19,7 +19,7 @@ impl Default for RegexOptions {
     fn default() -> Self {
         RegexOptions {
             pats: vec![],
-            size_limit: 10 * (1 << 20),
+            size_limit: 1 * (1 << 20),
             dfa_size_limit: 2 * (1 << 20),
             nest_limit: 250,
             case_insensitive: false,
