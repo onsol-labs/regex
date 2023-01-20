@@ -6,7 +6,7 @@ use std::slice;
 use std::str;
 
 use libc::{c_char, size_t};
-use regex::bytes;
+use sol_regex::bytes;
 
 use crate::error::{Error, ErrorKind};
 

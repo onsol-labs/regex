@@ -63,7 +63,7 @@ on how your program is structured. Thankfully, the
 crate provides an answer that works well:
 
     use lazy_static::lazy_static;
-    use regex::Regex;
+    use sol_regex::Regex;
 
     fn some_helper_function(text: &str) -> bool {
         lazy_static! {

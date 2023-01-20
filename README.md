@@ -30,7 +30,7 @@ Here's a simple example that matches a date in YYYY-MM-DD format and prints the
 year, month and day:
 
 ```rust
-use regex::Regex;
+use sol_regex::Regex;
 
 fn main() {
     let re = Regex::new(r"(?x)
@@ -52,7 +52,7 @@ If you have lots of dates in text that you'd like to iterate over, then it's
 easy to adapt the above example with an iterator:
 
 ```rust
-use regex::Regex;
+use sol_regex::Regex;
 
 const TO_SEARCH: &'static str = "
 On 2010-03-14, foo happened. On 2014-10-14, bar happened.
@@ -96,7 +96,7 @@ regular expressions are compiled exactly once.
 For example:
 
 ```rust,ignore
-use regex::Regex;
+use sol_regex::Regex;
 
 fn some_helper_function(text: &str) -> bool {
     lazy_static! {
@@ -124,7 +124,7 @@ value* using the main API.
 This example shows how to find all null-terminated strings in a slice of bytes:
 
 ```rust
-use regex::bytes::Regex;
+use sol_regex::bytes::Regex;
 
 let re = Regex::new(r"(?P<cstr>[^\x00]+)\x00").unwrap();
 let text = b"foo\x00bar\x00baz\x00";
@@ -148,7 +148,7 @@ This demonstrates how to use a `RegexSet` to match multiple (possibly
 overlapping) regular expressions in a single scan of the search text:
 
 ```rust
-use regex::RegexSet;
+use sol_regex::RegexSet;
 
 let set = RegexSet::new(&[
     r"\w+",

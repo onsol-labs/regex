@@ -4,7 +4,7 @@ use std::fmt;
 use std::str;
 
 use libc::c_char;
-use regex;
+use sol_regex;
 
 #[derive(Debug)]
 pub struct Error {

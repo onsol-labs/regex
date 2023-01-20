@@ -103,7 +103,7 @@ impl<'t> From<Match<'t>> for Range<usize> {
 /// Find the location of a US phone number:
 ///
 /// ```rust
-/// # use regex::Regex;
+/// # use sol_regex::Regex;
 /// let re = Regex::new("[0-9]{3}-[0-9]{3}-[0-9]{4}").unwrap();
 /// let mat = re.find("phone: 111-222-3333").unwrap();
 /// assert_eq!((mat.start(), mat.end()), (7, 19));
@@ -114,7 +114,7 @@ impl<'t> From<Match<'t>> for Range<usize> {
 /// > **Note**: This section requires that this crate is compiled with the
 /// > `pattern` Cargo feature enabled, which **requires nightly Rust**.
 ///
-/// Since `Regex` implements `Pattern`, you can use regexes with methods
+/// Since `Regex` implements `Pattern`, you can use sol_regexes with methods
 /// defined on `&str`. For example, `is_match`, `find`, `find_iter`
 /// and `split` can be replaced with `str::contains`, `str::find`,
 /// `str::match_indices` and `str::split`.
@@ -122,7 +122,7 @@ impl<'t> From<Match<'t>> for Range<usize> {
 /// Here are some examples:
 ///
 /// ```rust,ignore
-/// # use regex::Regex;
+/// # use sol_regex::Regex;
 /// let re = Regex::new(r"\d+").unwrap();
 /// let haystack = "a111b222c";
 ///
@@ -188,7 +188,7 @@ impl Regex {
     /// Unicode word characters:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let text = "I categorically deny having triskaidekaphobia.";
     /// assert!(Regex::new(r"\b\w{13}\b").unwrap().is_match(text));
@@ -211,7 +211,7 @@ impl Regex {
     /// Unicode word characters:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let text = "I categorically deny having triskaidekaphobia.";
     /// let mat = Regex::new(r"\b\w{13}\b").unwrap().find(text).unwrap();
@@ -233,7 +233,7 @@ impl Regex {
     /// word characters:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let text = "Retroactively relinquishing remunerations is reprehensible.";
     /// for mat in Regex::new(r"\b\w{13}\b").unwrap().find_iter(text) {
@@ -261,7 +261,7 @@ impl Regex {
     /// year separately.
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new(r"'([^']+)'\s+\((\d{4})\)").unwrap();
     /// let text = "Not my favorite movie: 'Citizen Kane' (1941).";
@@ -283,7 +283,7 @@ impl Regex {
     /// We can make this example a bit clearer by using *named* capture groups:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new(r"'(?P<title>[^']+)'\s+\((?P<year>\d{4})\)")
     ///                .unwrap();
@@ -327,7 +327,7 @@ impl Regex {
     /// some text, where the movie is formatted like "'Title' (xxxx)":
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new(r"'(?P<title>[^']+)'\s+\((?P<year>\d{4})\)")
     ///                .unwrap();
@@ -360,7 +360,7 @@ impl Regex {
     /// To split a string delimited by arbitrary amounts of spaces or tabs:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new(r"[ \t]+").unwrap();
     /// let fields: Vec<&str> = re.split("a b \t  c\td    e").collect();
@@ -384,7 +384,7 @@ impl Regex {
     /// Get the first two words in some text:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new(r"\W+").unwrap();
     /// let fields: Vec<&str> = re.splitn("Hey! How are you?", 3).collect();
@@ -431,7 +431,7 @@ impl Regex {
     /// In typical usage, this can just be a normal string:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new("[^01]+").unwrap();
     /// assert_eq!(re.replace("1078910", ""), "1010");
@@ -444,8 +444,8 @@ impl Regex {
     /// capturing group matches easily:
     ///
     /// ```rust
-    /// # use regex::Regex;
-    /// # use regex::Captures; fn main() {
+    /// # use sol_regex::Regex;
+    /// # use sol_regex::Captures; fn main() {
     /// let re = Regex::new(r"([^,\s]+),\s+(\S+)").unwrap();
     /// let result = re.replace("Springsteen, Bruce", |caps: &Captures| {
     ///     format!("{} {}", &caps[2], &caps[1])
@@ -460,7 +460,7 @@ impl Regex {
     /// with named capture groups:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new(r"(?P<last>[^,\s]+),\s+(?P<first>\S+)").unwrap();
     /// let result = re.replace("Springsteen, Bruce", "$first $last");
@@ -477,7 +477,7 @@ impl Regex {
     /// underscore:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let re = Regex::new(r"(?P<first>\w+)\s+(?P<second>\w+)").unwrap();
     /// let result = re.replace("deep fried", "${first}_$second");
@@ -494,9 +494,9 @@ impl Regex {
     /// byte string with `NoExpand`:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
-    /// use regex::NoExpand;
+    /// use sol_regex::NoExpand;
     ///
     /// let re = Regex::new(r"(?P<last>[^,\s]+),\s+(\S+)").unwrap();
     /// let result = re.replace("Springsteen, Bruce", NoExpand("$2 $last"));
@@ -604,7 +604,7 @@ impl Regex {
     /// `a`.
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// # fn main() {
     /// let text = "aaaaa";
     /// let pos = Regex::new(r"a+").unwrap().shortest_match(text);
@@ -936,7 +936,7 @@ impl<'t> Captures<'t> {
     /// group didn't participate in the match:
     ///
     /// ```rust
-    /// # use regex::Regex;
+    /// # use sol_regex::Regex;
     /// let re = Regex::new(r"[a-z]+(?:([0-9]+)|([A-Z]+))").unwrap();
     /// let caps = re.captures("abc123").unwrap();
     ///
@@ -1189,7 +1189,7 @@ pub trait Replacer {
     /// # Example
     ///
     /// ```
-    /// use regex::{Regex, Replacer};
+    /// use sol_regex::{Regex, Replacer};
     ///
     /// fn replace_all_twice<R: Replacer>(
     ///     re: Regex,

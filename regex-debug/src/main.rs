@@ -4,9 +4,9 @@ use std::process;
 use std::result;
 
 use docopt::Docopt;
-use regex::internal::{Compiler, LiteralSearcher};
 use regex_syntax::hir::literal::Literals;
 use regex_syntax::hir::Hir;
+use sol_regex::internal::{Compiler, LiteralSearcher};
 
 const USAGE: &'static str = "
 Usage:
