@@ -18,7 +18,7 @@ edition = "2018"
 
 [workspace]
 members = [
-  "bench", "regex-capi", "regex-debug", "regex-syntax",
+  "regex-capi", "regex-debug", "regex-syntax",
 ]
 
 [lib]
@@ -121,10 +121,10 @@ version = "0.6.27"
 default-features = false
 
 [profile.release]
-debug = true
-
-[profile.bench]
-debug = true
+debug = false
+lto = true
+codegen-units = 1
+opt-level = "z"
 
 [profile.test]
 debug = true
